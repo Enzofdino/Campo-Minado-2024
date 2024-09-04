@@ -29,7 +29,11 @@ public class GameManager : MonoBehaviour
     public void DefinirDiametro(string value)
     {
         diametroDoCampo = int.Parse(value);
+<<<<<<< Updated upstream
         managerUI.AtualizarBarra((float)numeroDeBombas / (diametroDoCampo * diametroDoCampo));
+=======
+       
+>>>>>>> Stashed changes
     }
 
     public void DefinirNumeroDeBombas(string value)
@@ -42,8 +46,14 @@ public class GameManager : MonoBehaviour
     {
         if (numeroDeBombas < Mathf.Pow(diametroDoCampo, 2))
         {
+<<<<<<< Updated upstream
             areas = new Area[diametroDoCampo, diametroDoCampo];
 
+=======
+
+            areas = new Area[diametroDoCampo, diametroDoCampo];
+
+>>>>>>> Stashed changes
             for (int i = 0; i < diametroDoCampo; i++)
             {
                 for (int j = 0; j < diametroDoCampo; j++)
@@ -54,7 +64,11 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+<<<<<<< Updated upstream
             Camera.main.transform.position = new Vector3(diametroDoCampo / 2f - 0.5f, diametroDoCampo / 2f - 0.5f, -10);
+=======
+            Camera.main.transform.position = new Vector3(diametroDoCampo / 2 - 0.5f, diametroDoCampo / 2 - 0.5f, -10);
+>>>>>>> Stashed changes
             Camera.main.orthographicSize = diametroDoCampo / 2f;
 
             DistribuirBombas();
