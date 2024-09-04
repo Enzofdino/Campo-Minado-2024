@@ -37,7 +37,28 @@ public class GameManager : MonoBehaviour
         numeroDeBombas = int.Parse(value);
         managerUI.AtualizarBarra((float)numeroDeBombas / (diametroDoCampo * diametroDoCampo));
     }
+    public void IniciarJogo()
+    {
+        ExcluirCampo();
+        GerarCampoMinado();
+        Camera.main.transform.position = new Vector3(diametroDoCampo / 2f - 0.5f, diametroDoCampo / 2f - 0.5f, -10);
+        Camera.main.orthographicSize = diametroDoCampo / 2f;
 
+        DistribuirBombas();
+        GameObject.Find("Menu Window").SetActive(false);
+        GameObject.Find("GameOver").SetActive(false);
+    }
+    void ExcluirCampo()
+    {
+        if(areas = null)
+        {
+            foreach (Area area in areas)
+            {
+                Destroy(area.gameObject);
+            }
+        }
+        
+    }
     public void GerarCampoMinado()
     {
         if (numeroDeBombas < Mathf.Pow(diametroDoCampo, 2))
@@ -54,13 +75,10 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            Camera.main.transform.position = new Vector3(diametroDoCampo / 2f - 0.5f, diametroDoCampo / 2f - 0.5f, -10);
-            Camera.main.orthographicSize = diametroDoCampo / 2f;
-
-            DistribuirBombas();
-            GameObject.Find("Menu Window").SetActive(false);
+            
         }
     }
+    
 
     public int ChecarEntorno(int x, int y)
     {
@@ -126,5 +144,7 @@ public class GameManager : MonoBehaviour
             }
             
         }
+        GameObject.Find("GameOver").SetActive(false);
     }
+
 }
